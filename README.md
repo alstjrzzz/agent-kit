@@ -5,8 +5,8 @@ Claude Code, Codex 등에서 쓰는 개인용 Agent Skills(SKILL.md) 모음이�
 ```
 agent-skills/
 ├── skills/
-│   ├── readme-writing/
-│   └── tech-writing/
+│   ├── readme-writing/SKILL.md
+│   └── tech-writing/SKILL.md
 ├── install.sh
 ├── install.ps1
 └── README.md
