@@ -12,7 +12,7 @@ Claude Code, Codex 등에서 쓰는 개인용 Agent Skills(SKILL.md) 모음이�
 
 | 자리 | 값 | 설명 | 비고 |
 |---|---|---|---|
-| script | `install.sh` / `install.ps1` | OS에 맞는 스크립트 선택 | `.sh`: linux/mac, `.ps1`: windows |
+| script | `./install.sh` / `.\install.ps1` | OS에 맞는 스크립트 선택 | `.sh`: linux/mac, `.ps1`: windows |
 | agent | `claude` / `codex` | skill을 적용할 에이전트 |  |
 | target | `global` / `<path>` | skill을 전역 또는 지정한 경로의 프로젝트에 적용 | 절대/상대경로 모두 지원 |
 | skill | `<skill1> <skill2> ...` | 적용할 skill 선택 | 생략시 전체 skill 적용 |
