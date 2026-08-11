@@ -2,19 +2,7 @@
 
 Claude Code, Codex 등에서 쓰는 개인용 Agent Skills(SKILL.md) 모음이다.
 
-이 폴더 안에서 실행한다.
-
-## 설치
-
-```bash
-cd skills
-./install.sh claude global
-```
-
-```powershell
-cd skills
-.\install.ps1 claude global
-```
+사용할 skill을 아래 옵션을 사용해 repo에 적용할 수 있다.
 
 ## 옵션
 
