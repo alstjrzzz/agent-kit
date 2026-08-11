@@ -37,4 +37,4 @@ cd config
 | `statusline-command.ps1` | 상태줄에 모델/컨텍스트 사용량/PR 상태/rate limit을 표시하는 렌더링 스크립트 |
 | `notify.ps1` | Stop/Notification 훅에서 OS 알림을 띄우는 스크립트 |
 
-> `settings.json`의 훅 경로가 `C:\Users\PC\...`처럼 절대경로로 박혀 있다. 설치 후 본인 사용자명/경로에 맞게 직접 수정해야 한다.
+> `settings.json`의 훅 경로는 `{{HOME}}` 플레이스홀더로 되어 있고, 설치 스크립트가 복사 시점에 이걸 실제 홈 디렉터리 경로로 자동 치환한다. 수동으로 고칠 필요 없음.

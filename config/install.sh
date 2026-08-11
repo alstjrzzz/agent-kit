@@ -25,4 +25,10 @@ TARGET="$HOME/.$AGENT"
 
 mkdir -p "$TARGET"
 cp -r "$SOURCE"/* "$TARGET"/
+
+# Substitute the {{HOME}} placeholder with this machine's actual home path
+grep -rl '{{HOME}}' "$TARGET" 2>/dev/null | while read -r f; do
+  sed -i "s|{{HOME}}|$HOME|g" "$f"
+done
+
 echo "Installed config: $TARGET"
