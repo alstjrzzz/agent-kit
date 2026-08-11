@@ -1,5 +1,5 @@
 #!/bin/bash
-# agent-skills copy script (macOS / Linux)
+# agent-kit skill copy script (macOS / Linux)
 # Works regardless of clone location or current working directory.
 #
 # Usage:
@@ -45,12 +45,15 @@ fi
 mkdir -p "$TARGET"
 
 if [ ${#SKILLS[@]} -eq 0 ]; then
-  cp -r "$SCRIPT_DIR"/skills/* "$TARGET"/
+  # Copy only skill directories -- this script and README.md live alongside them
+  for d in "$SCRIPT_DIR"/*/; do
+    [ -d "$d" ] && cp -r "$d" "$TARGET"/
+  done
   echo "Installed all skills: $TARGET"
 else
   for s in "${SKILLS[@]}"; do
-    if [ -d "$SCRIPT_DIR/skills/$s" ]; then
-      cp -r "$SCRIPT_DIR/skills/$s" "$TARGET"/
+    if [ -d "$SCRIPT_DIR/$s" ]; then
+      cp -r "$SCRIPT_DIR/$s" "$TARGET"/
     else
       echo "Skill not found: $s (skipped)"
     fi

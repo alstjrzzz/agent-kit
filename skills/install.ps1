@@ -1,4 +1,4 @@
-# agent-skills copy script (Windows PowerShell)
+# agent-kit skill copy script (Windows PowerShell)
 # Works regardless of clone location or current working directory.
 #
 # Usage:
@@ -37,11 +37,14 @@ if ($TargetArg -eq "global") {
 New-Item -ItemType Directory -Force -Path $Target | Out-Null
 
 if (-not $Skills -or $Skills.Count -eq 0) {
-    Copy-Item -Recurse -Force "$ScriptDir\skills\*" $Target
+    # Copy only skill directories -- this script and README.md live alongside them
+    Get-ChildItem -Path $ScriptDir -Directory | ForEach-Object {
+        Copy-Item -Recurse -Force $_.FullName $Target
+    }
     Write-Host "Installed all skills: $Target"
 } else {
     foreach ($s in $Skills) {
-        $src = Join-Path $ScriptDir "skills\$s"
+        $src = Join-Path $ScriptDir $s
         if (Test-Path $src) {
             Copy-Item -Recurse -Force $src $Target
         } else {

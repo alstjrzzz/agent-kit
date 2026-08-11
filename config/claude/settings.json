@@ -1,0 +1,40 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "sonnet",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -NonInteractive -File \"C:\\Users\\PC\\.claude\\notify.ps1\" -Title \"Claude Code\" -Body \"Task complete\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -NonInteractive -File \"C:\\Users\\PC\\.claude\\notify.ps1\" -Title \"Claude Code\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "powershell -NoProfile -NonInteractive -File \"C:\\Users\\PC\\.claude\\statusline-command.ps1\""
+  },
+  "enabledPlugins": {},
+  "effortLevel": "high",
+  "skipAutoPermissionPrompt": true
+}
