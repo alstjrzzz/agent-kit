@@ -23,6 +23,7 @@ Claude Code, Codex 등에서 쓰는 개인용 Agent Skills(SKILL.md) 모음이�
 |---|---|
 | [readme-writing](https://github.com/alstjrzzz/agent-kit/blob/main/skills/readme-writing/SKILL.md) | README.md 작성 |
 | [tech-writing](https://github.com/alstjrzzz/agent-kit/blob/main/skills/tech-writing/SKILL.md) | 기술 문서 작성 |
+| [fork-explore](https://github.com/alstjrzzz/agent-kit/blob/main/skills/fork-explore/SKILL.md) | 결론만 필요한 다단계 탐색을 fork로 격리 실행 |
 
 ## 많이 쓰는 조합
 
