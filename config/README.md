@@ -1,48 +1,19 @@
 # config
 
-Claude Code 등에서 쓰는 개인용 설정 파일 모음이다.
+Claude Code 전역 설정 파일 모음. 전부 `~/.claude/`에 놓는다.
 
-아래 옵션을 사용해 OS에 맞는 스크립트를 홈에 전역으로 설정한다.
-
-## 옵션
-
-```
-<script> <agent>
-```
-
-| 자리 | 값 | 설명 | 비고 |
-|---|---|---|---|
-| script | `./install.sh` / `.\install.ps1` | OS에 맞는 스크립트 선택 | `.sh`: linux/mac, `.ps1`: windows |
-| agent | `claude` | 적용할 에이전트 (현재는 claude만 지원) |  |
-
-## claude 설정 목록
+## 파일 목록
 
 | 파일 | 설명 |
 |---|---|
-| `settings.json` | 권한 모드, 훅, statusline, 모델 기본값 등 전역 설정 |
-| `statusline-command.ps1` | 상태 줄에 model / ctx usage / branch / rate limit 을 표시하는 렌더링 스크립트 |
-| `notify.ps1` | Stop / Notification 훅에서 OS 알림을 띄우는 스크립트 |
+| `claude/settings.json` | 권한 모드, 훅, statusLine, 모델 기본값 |
+| `claude/statusline-command.ps1` | 상태 줄(모델 / ctx / 브랜치) 렌더 스크립트 |
+| `claude/notify.ps1` | Stop / Notification 훅용 OS 알림 |
 
-> `settings.json`의 훅 경로는 `{{HOME}}` 플레이스홀더로 되어 있고, 설치 스크립트가 복사 시점에 이걸 실제 홈 디렉터리 경로로 자동 치환한다. 수동으로 고칠 필요 없음.
+## 설치 (AI에게 맡김)
 
-## 빠른 명령어
-
-```powershell
-# windows + claude
-.\install.ps1 claude
-```
-
-```powershell
-# windows + codex
-.\install.ps1 codex
-```
-
-```bash
-# linux + claude
-./install.sh claude
-```
-
-```bash
-# linux + codex
-./install.sh codex
-```
+1. `config/claude/`의 세 파일을 `~/.claude/`로 복사한다. 재작성하지 말고 복사한다.
+2. `settings.json` 안의 `{{HOME}}`를 실제 홈 경로로 치환한다.
+   Windows면 `C:\Users\<이름>`이고, JSON이라 백슬래시는 `\\`로 이스케이프한다.
+3. 확인: powershell 호출에 `-ExecutionPolicy Bypass`가 들어있어야 한다.
+   빠지면 실행 정책이 Restricted인 머신에서 statusLine 스크립트가 막혀 상태 줄이 안 뜬다.

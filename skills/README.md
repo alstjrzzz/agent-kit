@@ -1,55 +1,23 @@
 # skills
 
-Claude Code, Codex 등에서 쓰는 개인용 Agent Skills(SKILL.md) 모음이다.
+Claude Code용 Agent Skill(SKILL.md) 모음.
 
-사용할 skill을 아래 옵션을 사용해 repo에 적용할 수 있다.
+## 스킬 목록
 
-## 옵션
+| skill | 설명 | 권장 스코프 |
+|---|---|---|
+| [fork-explore](fork-explore/SKILL.md) | 조사·빌드·테스트를 fork로 격리하고 결론만 보고 | 전역 |
+| [readme-writing](readme-writing/SKILL.md) | README.md 작성 가이드 | 전역 |
+| [tech-writing](tech-writing/SKILL.md) | 기술 문서 작성 가이드 | 전역 |
 
-```
-<script> <agent> <target> [skill ...]
-```
+## 설치 (AI에게 맡김)
 
-| 자리 | 값 | 설명 | 비고 |
-|---|---|---|---|
-| script | `./install.sh` / `.\install.ps1` | OS에 맞는 스크립트 선택 | `.sh`: linux/mac, `.ps1`: windows |
-| agent | `claude` / `codex` | skill을 적용할 에이전트 |  |
-| target | `global` / `<path>` | skill을 전역 또는 지정한 경로의 프로젝트에 적용 | 절대/상대경로 모두 지원 |
-| skill | `<skill1> <skill2> ...` | 적용할 skill 선택 | 생략시 전체 skill 적용 |
+스킬 하나는 폴더 하나다. 그 폴더째 대상 위치로 복사하면 끝. 재작성하지 말고 복사한다.
 
-## skill 목록
+- 전역: `<skill>/` → `~/.claude/skills/<skill>/`
+- 프로젝트: `<skill>/` → `<project>/.claude/skills/<skill>/`
 
-| skill | 설명 |
-|---|---|
-| [readme-writing](https://github.com/alstjrzzz/agent-kit/blob/main/skills/readme-writing/SKILL.md) | README.md 작성 |
-| [tech-writing](https://github.com/alstjrzzz/agent-kit/blob/main/skills/tech-writing/SKILL.md) | 기술 문서 작성 |
-| [fork-explore](https://github.com/alstjrzzz/agent-kit/blob/main/skills/fork-explore/SKILL.md) | 결론만 필요한 다단계 탐색을 fork로 격리 실행 |
+전역이 기본이다. 특정 프로젝트에서만 쓰고 싶은 스킬만 프로젝트 스코프로 넣는다.
 
-## 많이 쓰는 조합
-
-아래는 Windows + Claude 환경 기준 예시다. 다른 조합은 위 옵션표를 참고해 바꾸면 된다.
-
-```powershell
-# 전체 skill을 전역으로 적용
-.\install.ps1 claude global
-```
-
-```powershell
-# 기술 문서 작성 관련 skill 묶음을 전역으로 적용
-.\install.ps1 claude global tech-writing readme-writing
-```
-
-```powershell
-# git 워크플로우 관련 skill 묶음을 전역으로 적용
-.\install.ps1 claude global pr-code-review commit-convention
-```
-
-```powershell
-# Python 프로젝트 전용 skill 묶음 적용
-.\install.ps1 claude <your-project-path> python-quality
-```
-
-```powershell
-# Spring 프로젝트 전용 skill 묶음 적용
-.\install.ps1 claude <your-project-path> spring-conventions
-```
+예) "fork-explore랑 tech-writing 전역에 설치해줘"
+→ 두 폴더를 `~/.claude/skills/`로 복사.
