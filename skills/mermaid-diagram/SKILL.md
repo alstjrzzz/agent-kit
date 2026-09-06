@@ -17,6 +17,20 @@ description: "다이어그램·그림·도식(구조, 흐름, 시퀀스, 상태,
 
 시스템을 자연스럽게 읽히는 대로 그린다. 양방향 관계는 화살표 하나(`<-->`)로, 엣지 라벨은 짧게, 노드 라벨은 `<br/>`로 줄바꿈.
 
+## 쓸만한 기능 (필요할 때 참고)
+
+- **시퀀스**: 다단계 흐름이면 `autonumber`를 거의 항상 켠다(단계 번호 자동). 활성화 막대 `A->>+B` / `B-->>-A`, 분기·반복은 `alt`/`opt`/`loop`/`par`, 한 시스템에 속한 참가자는 `box rgb(...) 이름 ... end`로 묶는다.
+- **flowchart**: 반복되는 색·스타일은 `classDef`로 한 번 정의해 `노드:::클래스`로 재사용. DB·문서·큐 등은 v11 시맨틱 도형 `db@{ shape: cyl }`(cyl/doc/hex/stadium…). 엣지는 `===`(굵게)·`-.->`(점선)로 종류를 구분. `subgraph 이름 ... end`로 묶고 안에서 `direction LR` 지정(단, 그 안 노드가 밖으로 연결되면 무시됨).
+- **파일 상단 frontmatter**로 제목·테마를 박아둔다(CLI 플래그 대신, 버전관리됨):
+  ```
+  ---
+  title: ...
+  config: { theme: neutral }
+  ---
+  ```
+- 색을 팔레트로 통일하려면 `base` 테마 + `themeVariables`(primaryColor / lineColor / primaryTextColor …).
+- 라벨에 볼드·줄바꿈은 마크다운 문자열 `A["**Media** Server<br/>Node.js"]`.
+
 ## 아이콘 (선택)
 
 강제 아님. 필요할 때만 갖다 쓴다.
@@ -48,4 +62,8 @@ MSYS_NO_PATHCONV=1 docker run --rm -v "<디렉토리>:/data" minlag/mermaid-cli 
 
 - `end`는 flowchart 예약어 — 노드 id로 쓰면 깨진다. 대문자 `End`나 따옴표 `["end"]`로 피한다.
 - 특수문자(`()`, `:`, `,`, `#`, `<>`)가 든 라벨은 따옴표로 감싼다: `A["gRPC (:50051)"]`.
-- `%%`는 주석.
+- `%%`는 주석. 단 주석 안에 `{}`를 넣으면 파서가 헷갈린다.
+
+## 참고
+
+문법이 헷갈리면 공식 문서를 확인한다: https://mermaid.js.org/intro/syntax-reference.html
