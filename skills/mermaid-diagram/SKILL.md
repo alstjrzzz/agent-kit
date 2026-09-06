@@ -41,7 +41,6 @@ MSYS_NO_PATHCONV=1 docker run --rm -v "<디렉토리>:/data" minlag/mermaid-cli 
 - **문서용은 SVG를 기본으로**(`-o *.svg`) — 벡터라 확대해도 깨끗하고 GitHub에서 렌더된다. 래스터가 필요할 때만 `.png` + `--scale 3`.
 - 테마 `-t default|neutral|forest|dark`, 배경 `-b transparent|white`. 특정 다이어그램만 테마 바꾸려면 코드 상단에 `%%{init: {'theme':'neutral'}}%%`.
 - 아이콘 팩을 쓰면 `--iconPacks @iconify-json/logos`를 추가한다.
-- 한글 라벨은 최신 minlag/mermaid-cli에 noto-cjk 폰트가 있어 그대로 렌더된다. 두부(□)로 나오면 이미지가 오래된 것 → `docker pull minlag/mermaid-cli`.
 - Docker가 없으면 렌더는 건너뛰고 코드만 준다. GitHub·마크다운·Claude 아티팩트에서 그대로 렌더된다.
 - 파싱 에러가 나면 `.mmd`를 최소 수정하고 재렌더한다.
 
