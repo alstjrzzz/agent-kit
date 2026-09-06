@@ -41,22 +41,24 @@ description: "다이어그램·그림·도식(구조, 흐름, 시퀀스, 상태,
   architecture-beta
     service db(logos:aws-dynamodb)[DynamoDB]
   ```
-  렌더할 때 `--iconPacks @iconify-json/logos`를 붙이고 네트워크가 필요하다(팩을 npm에서 받음). Iconify 아이콘은 `architecture-beta`에서만 되고, 이 타입은 아직 beta라 레이아웃이 단순하다.
+  Iconify 아이콘은 `architecture-beta`에서만 되고, 이 타입은 아직 beta라 레이아웃이 단순하다. 이 아이콘 렌더는 MCP에서 안 될 수 있어, 그때는 아래 렌더 섹션의 docker fallback을 쓴다.
 
 ## 렌더
 
-mermaid-cli(docker)로 만든다. pull·렌더 로그가 시끄러우니 [[fork-explore]]로 격리하고 결과 파일만 받는다.
+mermaid MCP(`mcp-mermaid`)로 렌더한다. 다이어그램 텍스트를 넘기면 이미지를 바로 돌려주므로 docker·fork 없이 툴 호출 한 번이면 된다.
+
+- `outputType`: 기본 `svg`(인라인 벡터, 문서에 깔끔). URL만 필요하면 `png_url`/`svg_url`(mermaid.ink 호스티드). 래스터 파일이 필요하면 `png`/`file`.
+- `theme`(default/neutral/forest/dark)·`backgroundColor` 지정 가능. 특정 다이어그램만 테마 바꾸려면 코드 상단에 `%%{init: {'theme':'neutral'}}%%`.
+- 결과가 인라인이면 그대로 보여주고, 파일로 저장되면 SendUserFile로 보낸다. 코드도 본문에 함께 보여준다.
+- MCP가 없거나 실패하면 렌더는 건너뛰고 코드만 준다 — GitHub·마크다운·Claude 아티팩트에서 그대로 렌더된다.
+- 파싱 에러가 나면 코드를 최소 수정하고 재렌더한다.
+
+아이콘 팩(`architecture-beta` + Iconify)이 MCP에서 안 먹으면, 그때만 mermaid-cli(docker)로 fallback한다. pull·렌더 로그가 시끄러우니 [[fork-explore]]로 격리한다:
 
 ```bash
 MSYS_NO_PATHCONV=1 docker run --rm -v "<디렉토리>:/data" minlag/mermaid-cli \
-  -i /data/<이름>.mmd -o /data/<이름>.svg -t neutral -b transparent
+  -i /data/<이름>.mmd -o /data/<이름>.svg --iconPacks @iconify-json/logos
 ```
-
-- **문서용은 SVG를 기본으로**(`-o *.svg`) — 벡터라 확대해도 깨끗하고 GitHub에서 렌더된다. 래스터가 필요할 때만 `.png` + `--scale 3`.
-- 테마 `-t default|neutral|forest|dark`, 배경 `-b transparent|white`. 특정 다이어그램만 테마 바꾸려면 코드 상단에 `%%{init: {'theme':'neutral'}}%%`.
-- 아이콘 팩을 쓰면 `--iconPacks @iconify-json/logos`를 추가한다.
-- Docker가 없으면 렌더는 건너뛰고 코드만 준다. GitHub·마크다운·Claude 아티팩트에서 그대로 렌더된다.
-- 파싱 에러가 나면 `.mmd`를 최소 수정하고 재렌더한다.
 
 ## 자주 걸리는 것
 
