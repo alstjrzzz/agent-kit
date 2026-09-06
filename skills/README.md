@@ -7,6 +7,7 @@ Claude Code용 Agent Skill(SKILL.md) 모음.
 | skill | 설명 | 권장 스코프 |
 |---|---|---|
 | [fork-explore](fork-explore/SKILL.md) | 조사·빌드·테스트를 fork로 격리하고 결론만 보고 | 전역 |
+| [mermaid-diagram](mermaid-diagram/SKILL.md) | mermaid로 다이어그램을 그려 코드+이미지로 제공 | 전역 |
 | [readme-writing](readme-writing/SKILL.md) | README.md 작성 가이드 | 전역 |
 | [tech-writing](tech-writing/SKILL.md) | 기술 문서 작성 가이드 | 전역 |
 
