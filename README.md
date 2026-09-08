@@ -1,11 +1,11 @@
 # agent-kit
 
-Claude Code, Codex 등에서 쓰는 개인용 skill(SKILL.md)과 설정 모음이다.
+Claude Code와 Codex에서 쓰는 개인용 skill(SKILL.md)과 설정 모음이다.
 
 ```
 agent-kit/
 ├── skills/    # Agent Skills (SKILL.md)
-└── config/    # Claude Code 등 개인 설정 (settings.json, statusline, notify 등)
+└── config/    # Claude Code와 Codex 개인 설정
 ```
 
 ## 설치

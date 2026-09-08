@@ -7,6 +7,7 @@
 #
 # Examples:
 #   ./install.sh claude
+#   ./install.sh codex
 
 set -e
 

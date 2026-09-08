@@ -6,6 +6,7 @@
 #
 # Examples:
 #   .\install.ps1 claude
+#   .\install.ps1 codex
 
 param(
     [Parameter(Mandatory=$true)][string]$Agent
