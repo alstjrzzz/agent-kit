@@ -1,19 +1,21 @@
 # config
 
-Claude Code 전역 설정 파일 모음. 전부 `~/.claude/`에 놓는다.
+Claude Code와 Codex에서 쓰는 개인용 설정 파일 모음이다. 설치 스크립트는 제공하지 않는다.
 
-## 파일 목록
+## claude 설정 목록
 
 | 파일 | 설명 |
 |---|---|
-| `claude/settings.json` | 권한 모드, 훅, statusLine, 모델 기본값 |
-| `claude/statusline-command.ps1` | 상태 줄(모델 / ctx / 브랜치) 렌더 스크립트 |
-| `claude/notify.ps1` | Stop / Notification 훅용 OS 알림 |
+| `settings.json` | 권한 모드, 훅, statusline, 모델 기본값 등 전역 설정 |
+| `statusline-command.ps1` | 상태 줄에 model / ctx usage / branch / rate limit 을 표시하는 렌더링 스크립트 |
+| `notify.ps1` | Stop / Notification 훅에서 OS 알림을 띄우는 스크립트 |
 
-## 설치 (AI에게 맡김)
+`settings.json`의 `{{HOME}}` 플레이스홀더는 실제 홈 경로로 치환한 뒤 `config/claude/`의 파일을 `~/.claude/`에 복사한다. Windows 경로는 JSON에서 백슬래시를 `\\`로 이스케이프한다.
 
-1. `config/claude/`의 세 파일을 `~/.claude/`로 복사한다. 재작성하지 말고 복사한다.
-2. `settings.json` 안의 `{{HOME}}`를 실제 홈 경로로 치환한다.
-   Windows면 `C:\Users\<이름>`이고, JSON이라 백슬래시는 `\\`로 이스케이프한다.
-3. 확인: powershell 호출에 `-ExecutionPolicy Bypass`가 들어있어야 한다.
-   빠지면 실행 정책이 Restricted인 머신에서 statusLine 스크립트가 막혀 상태 줄이 안 뜬다.
+## codex 설정 목록
+
+| 파일 | 설명 |
+|---|---|
+| `config.toml` | sandbox와 TUI status line 설정 조각 |
+
+`config.toml`은 기존 `~/.codex/config.toml`을 덮어쓰지 말고 필요한 키만 병합한다.

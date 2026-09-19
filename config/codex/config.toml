@@ -1,0 +1,13 @@
+# Codex user-level defaults for this setup.
+sandbox_mode = "danger-full-access"
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "fast-mode",
+  "project-name",
+  "git-branch",
+  "context-remaining",
+  "five-hour-limit",
+  "weekly-limit",
+]
