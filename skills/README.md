@@ -1,6 +1,6 @@
 # skills
 
-Claude Code용 Agent Skill(SKILL.md) 모음.
+Claude Code와 Codex에서 함께 쓰는 Agent Skill(SKILL.md) 모음.
 
 ## 스킬 목록
 
@@ -14,8 +14,8 @@ Claude Code용 Agent Skill(SKILL.md) 모음.
 
 스킬 하나는 폴더 하나다. 그 폴더째 대상 위치로 복사하면 끝. 재작성하지 말고 복사한다.
 
-- 전역: `<skill>/` → `~/.claude/skills/<skill>/`
-- 프로젝트: `<skill>/` → `<project>/.claude/skills/<skill>/`
+- 전역: `<skill>/` → `~/.{agent}/skills/<skill>/`
+- 프로젝트: `<skill>/` → `<project>/.{agent}/skills/<skill>/`
 
 전역이 기본이다. 특정 프로젝트에서만 쓰고 싶은 스킬만 프로젝트 스코프로 넣는다.
 
