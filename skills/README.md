@@ -6,7 +6,6 @@ Claude Code와 Codex에서 함께 쓰는 Agent Skill(SKILL.md) 모음.
 
 | skill | 설명 | 권장 스코프 |
 |---|---|---|
-| [clean-terminal](clean-terminal/SKILL.md) | 메인 대화의 터미널과 로그를 깔끔하게 유지하도록 시끄러운 실행을 subagent로 격리 | 전역 |
 | [readme-writing](readme-writing/SKILL.md) | README.md 작성 가이드 | 전역 |
 | [tech-writing](tech-writing/SKILL.md) | 기술 문서 작성 가이드 | 전역 |
 | [git-workflow](git-workflow/SKILL.md) | branch, commit, rebase, push, PR 작업 규칙 | 전역 설치 후 사용자 확인 |
