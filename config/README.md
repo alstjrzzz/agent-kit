@@ -7,10 +7,20 @@ Claude Code와 Codex에서 쓰는 개인용 설정 파일 모음이다. 설치 �
 | 파일 | 설명 |
 |---|---|
 | `settings.json` | 권한 모드, 훅, statusline, 모델 기본값 등 전역 설정 |
-| `statusline-command.ps1` | 상태 줄에 model / ctx usage / branch / rate limit 을 표시하는 렌더링 스크립트 |
-| `notify.ps1` | Stop / Notification 훅에서 OS 알림을 띄우는 스크립트 |
+| `statusline-command.ps1`, `statusline-command.py` | 상태 줄에 model / ctx usage / branch / rate limit 을 표시하는 렌더링 스크립트 (Windows / Linux) |
+| `notify.ps1`, `notify.sh` | Stop / Notification 훅에서 OS 알림을 띄우는 스크립트 (Windows / Linux) |
 
-`settings.json`의 `{{HOME}}` 플레이스홀더는 실제 홈 경로로 치환한 뒤 `config/claude/`의 파일을 `~/.claude/`에 복사한다. Windows 경로는 JSON에서 백슬래시를 `\\`로 이스케이프한다.
+`settings.json`의 `{{HOME}}` 플레이스홀더는 실제 홈 경로로 치환한 뒤 `config/claude/`의 파일 중 해당 OS 스크립트를 `~/.claude/`에 복사한다. Windows 경로는 JSON에서 백슬래시를 `\\`로 이스케이프한다.
+
+`settings.json`의 훅과 statusLine 명령은 Windows 기준이다. Linux와 WSL에서는 아래 명령으로 바꾼다.
+
+| 위치 | Linux 명령 |
+|---|---|
+| `hooks.Stop` | `bash "$HOME/.claude/notify.sh" "Claude Code" "Task complete"` |
+| `hooks.Notification` | `bash "$HOME/.claude/notify.sh" "Claude Code"` |
+| `statusLine` | `python3 "$HOME/.claude/statusline-command.py"` |
+
+Linux 알림은 `notify-send`가 있어야 뜬다. WSL에서는 WSLg가 알림을 Windows로 넘긴다.
 
 ## codex 설정 목록
 
