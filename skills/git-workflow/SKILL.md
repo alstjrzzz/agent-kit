@@ -75,6 +75,14 @@ git commit --fixup=<target-commit>
 
 This makes the review trail easier to follow. Before the PR is merged, autosquash these fixups into their targets as part of the final history cleanup. Do not publish the fixup commit yourself because the branch has an active PR; provide the appropriate `git push` command to the user.
 
+## Finishing a branch
+
+When the user confirms a branch's work is finished, integrate it into its target branch and delete the branch, including its remote copy if it was published. Start the next piece of work on a new branch from the updated target; do not stack new work on a finished branch.
+
+If the publication guardrail prevents you from integrating or pushing, give the user the integrate, push, and delete commands together.
+
+Delete with `git branch -d`, not `-D`, so unmerged work is not lost. Do not delete branches that were not created for the finished work.
+
 ## Quality and safety checks
 
 Before committing or handing off a history, inspect the staged diff and status. Do not commit secrets, credentials, generated local configuration, or unrelated user changes.
