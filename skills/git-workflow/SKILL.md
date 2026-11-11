@@ -61,6 +61,8 @@ Shape the history into meaningful, coherent change units before publication:
 - During PR review, isolate broad mechanical changes, such as mass import-path rewrites, from behavioral changes when that improves reviewability.
 - Before merging to `main`, fold review-only separations and temporary commits back into the smallest sensible long-term history, unless a local project rule says otherwise.
 
+When the user asks to clean up commits, the scope is the whole branch against its target (`<target>..<branch>`), not only the commits made in the current session. Group them by theme, keep the final tree identical to the original (`git diff --quiet <old-tip> <new-tip>`), and run the tests on each resulting commit. Cleaning up commits is only a history rewrite on the same branch: it never integrates the branch.
+
 Before a PR is finalized, rebase the branch onto its current target branch and consolidate fixup commits, normally with an interactive autosquash rebase such as `git rebase -i --autosquash <target-branch>`. Resolve conflicts and inspect the resulting log and diff. Integrate the cleaned branch with a fast-forward-only merge where the repository workflow permits it; a local project rule may specify a different merge strategy.
 
 Before opening a PR, update from its target/base branch so the PR starts from current code and avoids avoidable conflicts. Do not do this merely as an automatic background operation: perform it when preparing the PR or when the user requests synchronization.
@@ -79,6 +81,8 @@ This makes the review trail easier to follow. Before the PR is merged, autosquas
 
 When the user confirms a branch's work is finished, integrate it into its target branch and delete the branch, including its remote copy if it was published. Start the next piece of work on a new branch from the updated target; do not stack new work on a finished branch.
 
+Integrate only on an explicit request in the current turn ("finished, merge it", "put it in main"). A request to clean up commits, or the user explaining why branches should stay clean, is not that request. Do not merge into `main`, even locally, without it.
+
 If the publication guardrail prevents you from integrating or pushing, give the user the integrate, push, and delete commands together.
 
 Delete with `git branch -d`, not `-D`, so unmerged work is not lost. Do not delete branches that were not created for the finished work.
@@ -88,3 +92,5 @@ Delete with `git branch -d`, not `-D`, so unmerged work is not lost. Do not dele
 Before committing or handing off a history, inspect the staged diff and status. Do not commit secrets, credentials, generated local configuration, or unrelated user changes.
 
 On WIP branches, commits may be amended, rebased, reset, or otherwise rewritten freely. For a rewritten remote history, prefer `--force-with-lease` whenever a push is appropriate under the publication guardrail.
+
+Keep the branch list clean. Do not create backup, temporary, or scratch branches when rewriting history; if a pre-rewrite state must be recoverable, rely on the reflog (`git reflog`) instead. If a temporary branch is truly unavoidable, delete it in the same step before reporting.
