@@ -8,6 +8,7 @@ Claude Code와 Codex에서 함께 쓰는 Agent Skill(SKILL.md) 모음.
 |---|---|---|
 | [tech-writing](tech-writing/SKILL.md) | 기술 문서 작성 가이드 | 전역 |
 | [git-workflow](git-workflow/SKILL.md) | branch, commit, rebase, push, PR 작업 규칙 | 전역 설치 후 사용자 확인 |
+| [git-workflow-virtual-ecus](git-workflow-virtual-ecus/SKILL.md) | virtual_ecus 전용 git 작업 규칙 | virtual_ecus 프로젝트 |
 
 ## 원칙
 
